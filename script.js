@@ -8,13 +8,11 @@ window.addEventListener('scroll', () => {
 const toggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');
 toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-
-// Close mobile menu on link click
 navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => navLinks.classList.remove('open'));
 });
 
-// Audio/Visual tabs
+// Filmmaking tabs (Photo / Video)
 document.querySelectorAll('.av-tab').forEach(tab => {
     tab.addEventListener('click', () => {
         document.querySelectorAll('.av-tab').forEach(t => t.classList.remove('active'));
@@ -23,6 +21,23 @@ document.querySelectorAll('.av-tab').forEach(tab => {
         document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
     });
 });
+
+// Show more videos
+const showMoreBtn = document.getElementById('show-more-videos');
+if (showMoreBtn) {
+    showMoreBtn.addEventListener('click', () => {
+        document.querySelectorAll('.hidden-video').forEach(card => {
+            card.classList.remove('hidden-video');
+            // Load the iframe src from data-src
+            const iframe = card.querySelector('iframe[data-src]');
+            if (iframe) {
+                iframe.src = iframe.dataset.src;
+                iframe.removeAttribute('data-src');
+            }
+        });
+        showMoreBtn.style.display = 'none';
+    });
+}
 
 // Lightbox
 const lightbox = document.getElementById('lightbox');
@@ -70,14 +85,12 @@ function closeLightbox() {
 }
 
 // Scroll fade-in animation
-const fadeEls = document.querySelectorAll('.section-title, .coaching-layout, .music-card, .gallery-item, .video-card');
+const fadeEls = document.querySelectorAll('.section-title, .coaching-centered, .music-card, .gallery-item, .video-card, .energy-test-card, .who-teaser-layout, .youtube-cta-inner');
 fadeEls.forEach(el => el.classList.add('fade-in'));
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
     });
 }, { threshold: 0.1 });
 

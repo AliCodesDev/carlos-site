@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escuela Psicodélica | Music, Audio/Visual & Coaching</title>
-    <meta name="description" content="Escuela Psicodélica — Music, Filmmaking, Visual Arts & Life Coaching.">
+    <title>Escuela Psicodélica | Coaching, Filmmaking & Music</title>
+    <meta name="description" content="Escuela Psicodélica — Life Coaching, Filmmaking & Music by Carlos Flores.">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="assets/images/logo.png" type="image/jpeg">
+    <link rel="icon" href="assets/images/flower-of-life.png" type="image/png">
 </head>
 <body>
 
@@ -17,22 +17,139 @@
             <span></span><span></span><span></span>
         </button>
         <ul class="nav-links">
-            <li><a href="#music">Music</a></li>
-            <li><a href="#audiovisual">Audio / Visual</a></li>
             <li><a href="#coaching">Coaching</a></li>
+            <li><a href="#filmmaking">Filmmaking</a></li>
+            <li><a href="#music">Music</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
     <!-- HERO -->
     <section id="hero">
-        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <img src="assets/images/logo.png" alt="Escuela Psicodélica logo" class="hero-logo">
-            <h1>Escuela Psicodélica</h1>
-            <p class="hero-tagline">Music &middot; Audio/Visual &middot; Coaching</p>
-            <div class="hero-cta">
-                <a href="#music" class="btn">Explore</a>
+            <img src="assets/images/flower-of-life.png" alt="" class="hero-symbol">
+            <h1 class="hero-title">Escuela Psicodélica</h1>
+            <p class="hero-tagline">Coaching &middot; Filmmaking &middot; Music</p>
+            <a href="#coaching" class="btn">Explore</a>
+        </div>
+    </section>
+
+    <!-- ENERGY TEST -->
+    <section id="energy-test">
+        <div class="container">
+            <div class="energy-test-card">
+                <h2>Discover Your Predominant Energy</h2>
+                <p>Take the Masculine & Feminine Energy Test and unlock a deeper understanding of yourself.</p>
+                <a href="energy-test.html" class="btn">Take the Test</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO AM I TEASER -->
+    <section id="who-teaser">
+        <div class="container">
+            <div class="who-teaser-layout">
+                <div class="who-teaser-image">
+                    <img src="assets/images/coaching-photo.jpg" alt="Carlos Flores" loading="lazy">
+                </div>
+                <div class="who-teaser-content">
+                    <h2>Who Am I</h2>
+                    <p>Filmmaker, musician, life coach — and a seeker of truth. I've spent years exploring the intersection of creativity, spirituality, and personal transformation. My mission is to help you unlock your full potential.</p>
+                    <a href="who-am-i.html" class="btn btn-outline">Read My Story</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YOUTUBE CTA -->
+    <section id="youtube-cta">
+        <div class="container youtube-cta-inner">
+            <h2>Follow Me on YouTube</h2>
+            <p>I create content about consciousness, creativity, filmmaking, music, and personal growth. New videos every week.</p>
+            <a href="https://www.youtube.com/@escuelapsicodelica/featured" target="_blank" rel="noopener" class="btn">Check It Out</a>
+        </div>
+    </section>
+
+    <!-- COACHING -->
+    <section id="coaching">
+        <div class="container coaching-centered">
+            <div class="coaching-image">
+                <img src="assets/images/coaching-photo.jpg" alt="Carlos Flores" loading="lazy">
+            </div>
+            <h2>Ready to transform your life?</h2>
+            <a href="https://calendly.com/carlosflorescoach/llamadadedescubrimiento" target="_blank" rel="noopener" class="btn btn-large">Book a 1-on-1 Call With Me</a>
+        </div>
+    </section>
+
+    <!-- FILMMAKING -->
+    <section id="filmmaking">
+        <div class="container">
+            <h2 class="section-title">Filmmaking</h2>
+
+            <!-- Tabs -->
+            <div class="av-tabs">
+                <button class="av-tab active" data-tab="photo">Photo</button>
+                <button class="av-tab" data-tab="video">Video</button>
+            </div>
+
+            <!-- PHOTO -->
+            <div class="av-panel active" id="panel-photo">
+                <div class="gallery">
+                    <div class="gallery-item"><img src="assets/images/portfolio-1.jpg" alt="Portrait photography" loading="lazy"></div>
+                    <div class="gallery-item"><img src="assets/images/portfolio-7.jpg" alt="Portrait photography" loading="lazy"></div>
+                    <div class="gallery-item"><img src="assets/images/portfolio-4.png" alt="Fine art photography" loading="lazy"></div>
+                    <div class="gallery-item"><img src="assets/images/portfolio-5.jpg" alt="Amsterdam photography" loading="lazy"></div>
+                    <div class="gallery-item"><img src="assets/images/portfolio-6.jpg" alt="Portrait photography" loading="lazy"></div>
+                    <div class="gallery-item"><img src="assets/images/portfolio-8.jpg" alt="Event photography" loading="lazy"></div>
+                    <div class="gallery-item"><img src="assets/images/portfolio-2.jpg" alt="Still life photography" loading="lazy"></div>
+                    <div class="gallery-item"><img src="assets/images/portfolio-9.jpg" alt="Amsterdam photography" loading="lazy"></div>
+                    <div class="gallery-item"><img src="assets/images/portfolio-3.jpg" alt="Portrait photography" loading="lazy"></div>
+                </div>
+            </div>
+
+            <!-- VIDEO -->
+            <div class="av-panel" id="panel-video">
+                <div class="video-grid" id="video-grid">
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/m0kzSTzPfrk" title="Cinematography Showreel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <h4>Cinematography Showreel</h4>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/V9xsMtxgI-I" title="Filmmaking Reel 2021" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <h4>Filmmaking Reel 2021</h4>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/xTo8Jw4Avuc" title="Events Reel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <h4>Events Reel</h4>
+                    </div>
+                    <div class="video-card hidden-video">
+                        <div class="video-wrapper">
+                            <iframe data-src="https://www.youtube.com/embed/kTVHwl4VjeA" title="Springs Shortfilm" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <h4>"Springs" (2015) Shortfilm</h4>
+                    </div>
+                    <div class="video-card hidden-video">
+                        <div class="video-wrapper">
+                            <iframe data-src="https://www.youtube.com/embed/YgS37h9mOco" title="Amsterdam TIME LAPSE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <h4>Amsterdam TIME LAPSE</h4>
+                    </div>
+                    <div class="video-card hidden-video">
+                        <div class="video-wrapper">
+                            <iframe data-src="https://www.youtube.com/embed/AtMUs6Xh_kk" title="Picture Perfect Match ADVERT" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <h4>Picture Perfect Match ADVERT</h4>
+                    </div>
+                </div>
+                <div class="section-cta">
+                    <button class="btn btn-outline" id="show-more-videos">Show More</button>
+                </div>
             </div>
         </div>
     </section>
@@ -72,205 +189,6 @@
         </div>
     </section>
 
-    <!-- AUDIO / VISUAL -->
-    <section id="audiovisual">
-        <div class="container">
-            <h2 class="section-title">Audio / Visual</h2>
-
-            <!-- Sub-nav tabs -->
-            <div class="av-tabs">
-                <button class="av-tab active" data-tab="images">Images</button>
-                <button class="av-tab" data-tab="videos">Videos</button>
-            </div>
-
-            <!-- IMAGES -->
-            <div class="av-panel active" id="panel-images">
-                <div class="gallery">
-                    <div class="gallery-item"><img src="assets/images/portfolio-1.jpg" alt="Portrait photography" loading="lazy"></div>
-                    <div class="gallery-item"><img src="assets/images/portfolio-7.jpg" alt="Portrait photography" loading="lazy"></div>
-                    <div class="gallery-item"><img src="assets/images/portfolio-4.png" alt="Fine art photography" loading="lazy"></div>
-                    <div class="gallery-item"><img src="assets/images/portfolio-5.jpg" alt="Amsterdam photography" loading="lazy"></div>
-                    <div class="gallery-item"><img src="assets/images/portfolio-6.jpg" alt="Portrait photography" loading="lazy"></div>
-                    <div class="gallery-item"><img src="assets/images/portfolio-8.jpg" alt="Event photography" loading="lazy"></div>
-                    <div class="gallery-item"><img src="assets/images/portfolio-2.jpg" alt="Still life photography" loading="lazy"></div>
-                    <div class="gallery-item"><img src="assets/images/portfolio-9.jpg" alt="Amsterdam photography" loading="lazy"></div>
-                    <div class="gallery-item"><img src="assets/images/portfolio-3.jpg" alt="Portrait photography" loading="lazy"></div>
-                </div>
-            </div>
-
-            <!-- VIDEOS -->
-            <div class="av-panel" id="panel-videos">
-                <div class="video-grid">
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/m0kzSTzPfrk" title="Cinematography Showreel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Cinematography Showreel</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/V9xsMtxgI-I" title="Filmmaking Reel 2021" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Filmmaking Reel 2021</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/xTo8Jw4Avuc" title="Events Reel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Events Reel</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/sngS9UVLyrc" title="Qué Significa Ser Artista" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Qué Significa Ser Artista (?)</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/kTVHwl4VjeA" title="Springs Shortfilm" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>"Springs" (2015) Shortfilm</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/co0RtvefIW8" title="Teaser Tortura" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Teaser "Tortura"</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/TUNiV9GOgxE" title="Autorretrato" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Autorretrato</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/YgS37h9mOco" title="Amsterdam TIME LAPSE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Amsterdam TIME LAPSE</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/wbEi5-zbsNs" title="La Casa de Jengibre" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>La Casa de Jengibre</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/AoPiLg8DZ3A" title="Most beautiful drone videos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Most Beautiful Drone Videos 2015</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/AtMUs6Xh_kk" title="Picture Perfect Match ADVERT" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Picture Perfect Match ADVERT</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/tTSTuDCflN8" title="MJ ALKHOORY - Social Media Advert" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>MJ ALKHOORY - Social Media Advert</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/-Pb9_p6G6YE" title="Interviews Singulart" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Interviews Singulart</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/awpRIEVy6LI" title="Receptionist (QUIOZ Interview)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Receptionist (QUIOZ Interview)</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/cgZ5cDhQzZM" title="Youth Global Forum" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Youth Global Forum (Ambassadors Program)</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/R1SGpIGUzjw" title="Humans Of Film Festival" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Humans Of Film Festival</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/uKjbv8Yfp0s" title="Vuejs Amsterdam 2020" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Vuejs Amsterdam 2020</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/9EDq_1v_a2I" title="Techno Meditation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Techno Meditation - Crystal/Minds</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/63rwN-R1YNY" title="Trippsitters Profesionales" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Trippsitters Profesionales en Ámsterdam</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/A5sBOs91X84" title="College Radio Interview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>College Radio Interview</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/2vQquJypV-g" title="Un hobby" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Un Hobby</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/bIXNYzh_uyM" title="haz DINERO como ARTISTA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Haz DINERO como ARTISTA (Freelancer)</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- COACHING -->
-    <section id="coaching">
-        <div class="container">
-            <h2 class="section-title">Coaching</h2>
-            <div class="coaching-layout">
-                <div class="coaching-image">
-                    <img src="assets/images/carlos-portrait.png" alt="Carlos Flores" loading="lazy">
-                </div>
-                <div class="coaching-content">
-                    <h3>Ready to transform your life?</h3>
-                    <p>After years of personal growth and overcoming challenges, I've built a coaching program designed to accelerate your transformation — saving you time and pain.</p>
-
-                    <div class="coaching-phases">
-                        <div class="phase">
-                            <h4>1. Shadow Work</h4>
-                            <p>We'll uncover the beliefs and emotions blocking you from reaching your full potential.</p>
-                        </div>
-                        <div class="phase">
-                            <h4>2. Massive Action</h4>
-                            <p>I'll encourage you to take the actions you truly want, with accountability and valuable feedback each week.</p>
-                        </div>
-                        <div class="phase">
-                            <h4>3. Integration</h4>
-                            <p>We'll turn those actions into your new identity — becoming the version 2.0 of yourself you've always dreamed of.</p>
-                        </div>
-                    </div>
-
-                    <a href="https://calendly.com/carlosflorescoach/llamadadedescubrimiento" target="_blank" rel="noopener" class="btn">Book a Free Discovery Call</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- CONTACT / FOOTER -->
     <footer id="contact">
         <div class="container">
@@ -282,6 +200,9 @@
                 <a href="https://www.youtube.com/@escuelapsicodelica/featured" target="_blank" rel="noopener" aria-label="YouTube">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                 </a>
+            </div>
+            <div class="footer-links">
+                <a href="who-am-i.html">Who Am I</a>
             </div>
             <p class="footer-text">Escuela Psicodélica &copy; 2026</p>
         </div>

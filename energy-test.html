@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Energía | Escuela Psicodélica</title>
+    <meta name="description" content="Descubre tu energía predominante — masculina o femenina — en solo 5 minutos.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/images/flower-of-life.png" type="image/png">
+    <style>
+        .quiz-page { padding: 140px 0 100px; min-height: 100vh; }
+        .quiz-header { text-align: center; margin-bottom: 48px; }
+        .quiz-header h1 {
+            font-family: 'KG Happy', cursive;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .quiz-header p { color: var(--text-muted); max-width: 550px; margin: 0 auto; }
+
+        .quiz-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid rgba(201,162,77,0.2);
+            border-radius: 12px;
+            padding: 48px 40px;
+        }
+
+        .quiz-progress {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 36px;
+        }
+        .quiz-progress-dot {
+            flex: 1;
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            transition: background 0.3s;
+        }
+        .quiz-progress-dot.done { background: var(--gold); }
+        .quiz-progress-dot.current { background: var(--gold-light); }
+
+        .quiz-category {
+            font-size: 0.8rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+        }
+        .quiz-question {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+
+        .quiz-options { display: flex; flex-direction: column; gap: 12px; }
+        .quiz-option {
+            padding: 20px 24px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--text);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            background: transparent;
+            text-align: left;
+            width: 100%;
+        }
+        .quiz-option:hover {
+            border-color: var(--gold);
+            background: rgba(201,162,77,0.05);
+        }
+        .quiz-option.selected {
+            border-color: var(--gold);
+            background: rgba(201,162,77,0.12);
+        }
+
+        .quiz-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 32px;
+        }
+        .quiz-nav .btn { min-width: 120px; text-align: center; }
+        .quiz-nav .btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Result */
+        .quiz-result { display: none; text-align: center; }
+        .quiz-result h2 {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        .quiz-result .result-type {
+            font-family: 'KG Happy', cursive;
+            font-size: 2.5rem;
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+        .quiz-result p {
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto 32px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .quiz-step { display: none; }
+        .quiz-step.active { display: block; }
+
+        @media (max-width: 480px) {
+            .quiz-card { padding: 32px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar" class="scrolled">
+        <a href="index.html" class="nav-logo">Escuela Psicodélica</a>
+        <button class="nav-toggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html#coaching">Coaching</a></li>
+            <li><a href="index.html#filmmaking">Filmmaking</a></li>
+            <li><a href="index.html#music">Music</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="quiz-page">
+        <div class="container">
+            <div class="quiz-header">
+                <h1>¿Cuál es tu Energía Predominante?</h1>
+                <p>Aunque todos tenemos ambas energías masculina y femenina, siempre habrá una que sea predominante. Descúbrelo en solo 5 minutos.</p>
+            </div>
+
+            <div class="quiz-card">
+                <div class="quiz-progress" id="quiz-progress"></div>
+
+                <div id="quiz-container"></div>
+
+                <div class="quiz-result" id="quiz-result">
+                    <h2>Tu energía predominante es</h2>
+                    <div class="result-type" id="result-type"></div>
+                    <p id="result-text"></p>
+                    <a href="https://calendly.com/carlosflorescoach/llamadadedescubrimiento" target="_blank" rel="noopener" class="btn">Habla conmigo sobre tu resultado</a>
+                    <br><br>
+                    <a href="index.html" style="color: var(--text-muted); font-size: 0.9rem;">&larr; Volver al inicio</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    const questions = [
+        {
+            category: "Trabajo",
+            question: "¿Qué es más importante para ti?",
+            options: [
+                { text: "Me gusta mi trabajo, aunque para mí lo realmente importante es formar una familia y dedicarme a mis hijos.", energy: "fem" },
+                { text: "Trabajar de mi pasión y ser capaz de proveer la vida de mis sueños para mí y para los míos.", energy: "masc" }
+            ]
+        },
+        {
+            category: "Motivación",
+            question: "¿Cuándo me siento más motivad@?",
+            options: [
+                { text: "Cuando siento que me necesitan y valoran mi presencia.", energy: "masc" },
+                { text: "Cuando me arreglo y me dan mensaje de qué guap@ estoy.", energy: "fem" }
+            ]
+        },
+        {
+            category: "Expresión",
+            question: "Cuando cuento algo que me ha pasado…",
+            options: [
+                { text: "Expreso con detalles cómo me sentía en aquel momento.", energy: "fem" },
+                { text: "Me centro más en los hechos objetivos para que la otra persona entienda lo que ha pasado.", energy: "masc" }
+            ]
+        },
+        {
+            category: "Deadlines",
+            question: "En cuanto a plazos y tiempos…",
+            options: [
+                { text: "Trabajo mejor sin presiones, dándome mi tiempo a como yo me sienta en cada momento.", energy: "fem" },
+                { text: "Necesito una fecha fija para terminar un proyecto, eso me hace moverme y me motiva. Sin una fecha límite no soy capaz de concentrarme.", energy: "masc" }
+            ]
+        },
+        {
+            category: "Intuición",
+            question: "A la hora de tomar decisiones…",
+            options: [
+                { text: "Suelo dejarme guiar por mi intuición, aunque esto vaya en contra de lo que dice mi cabeza. Para mí lo importante es sentirlo.", energy: "fem" },
+                { text: "Suelo analizar la situación y tomar la decisión racional que más me convenga, sopesando lo positivo y lo negativo.", energy: "masc" }
+            ]
+        },
+        {
+            category: "Amor",
+            question: "En una relación, lo que más valoro es…",
+            options: [
+                { text: "Me gusta que mi pareja me dedique tiempo y atención, además que me diga que guap@ estoy. Eso me hace sentir muy querid@.", energy: "fem" },
+                { text: "Lo único que necesito es que valoren mi trabajo y presencia. Ser de utilidad para los demás es la mejor sensación.", energy: "masc" }
+            ]
+        },
+        {
+            category: "Multitasking",
+            question: "Cuando estoy trabajando y alguien me interrumpe…",
+            options: [
+                { text: "Si estoy concentrado en un proyecto no soporto que me interrumpan. Necesito enfocarme en una tarea solo.", energy: "masc" },
+                { text: "Si me llaman para charlar no tengo problema en seguir con mis tareas mientras mantengo la conversación. De hecho, lo disfruto.", energy: "fem" }
+            ]
+        },
+        {
+            category: "Discusiones",
+            question: "Cuando un amigo o pareja viene con un problema…",
+            options: [
+                { text: "Lo que me interesa es acabar con la discusión cuanto antes, por lo que brindo consejo a la otra persona de lo que podría hacer para mejorar la situación.", energy: "masc" },
+                { text: "Normalmente no necesito una solución, sino sentir la presencia de la otra persona y que me escuchen atentamente.", energy: "fem" }
+            ]
+        }
+    ];
+
+    let current = 0;
+    let answers = [];
+    const container = document.getElementById('quiz-container');
+    const progressBar = document.getElementById('quiz-progress');
+
+    // Build progress dots
+    questions.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'quiz-progress-dot' + (i === 0 ? ' current' : '');
+        progressBar.appendChild(dot);
+    });
+
+    function renderQuestion() {
+        const q = questions[current];
+        container.innerHTML = `
+            <div class="quiz-step active">
+                <div class="quiz-category">${q.category}</div>
+                <div class="quiz-question">${q.question}</div>
+                <div class="quiz-options">
+                    ${q.options.map((opt, i) => `
+                        <button class="quiz-option ${answers[current] === i ? 'selected' : ''}" data-index="${i}">
+                            ${opt.text}
+                        </button>
+                    `).join('')}
+                </div>
+                <div class="quiz-nav">
+                    <button class="btn btn-outline" onclick="prev()" ${current === 0 ? 'disabled' : ''}>Back</button>
+                    <button class="btn" onclick="next()" id="next-btn" ${answers[current] === undefined ? 'disabled' : ''}>${current === questions.length - 1 ? 'Ver Resultado' : 'Next'}</button>
+                </div>
+            </div>
+        `;
+        // Attach click listeners without re-render
+        container.querySelectorAll('.quiz-option').forEach(btn => {
+            btn.addEventListener('click', () => selectOption(parseInt(btn.dataset.index)));
+        });
+        // Update progress
+        document.querySelectorAll('.quiz-progress-dot').forEach((dot, i) => {
+            dot.className = 'quiz-progress-dot';
+            if (i < current) dot.classList.add('done');
+            if (i === current) dot.classList.add('current');
+        });
+    }
+
+    function selectOption(i) {
+        answers[current] = i;
+        // Just update classes, no re-render
+        container.querySelectorAll('.quiz-option').forEach((btn, idx) => {
+            btn.classList.toggle('selected', idx === i);
+        });
+        document.getElementById('next-btn').disabled = false;
+    }
+
+    function next() {
+        if (answers[current] === undefined) return;
+        if (current < questions.length - 1) {
+            current++;
+            renderQuestion();
+        } else {
+            showResult();
+        }
+    }
+
+    function prev() {
+        if (current > 0) {
+            current--;
+            renderQuestion();
+        }
+    }
+
+    function showResult() {
+        let fem = 0, masc = 0;
+        answers.forEach((ansIdx, qIdx) => {
+            const energy = questions[qIdx].options[ansIdx].energy;
+            if (energy === 'fem') fem++;
+            else masc++;
+        });
+
+        container.style.display = 'none';
+        progressBar.style.display = 'none';
+        const result = document.getElementById('quiz-result');
+        result.style.display = 'block';
+
+        const type = document.getElementById('result-type');
+        const text = document.getElementById('result-text');
+
+        if (fem > masc) {
+            type.textContent = 'Energía Femenina';
+            text.textContent = 'Tu energía predominante es femenina. Esto significa que tiendes a guiarte por la intuición, la expresión emocional y la conexión. Valoras el proceso por encima del resultado y te sientes más cómodo/a fluyendo con el momento presente.';
+        } else if (masc > fem) {
+            type.textContent = 'Energía Masculina';
+            text.textContent = 'Tu energía predominante es masculina. Esto significa que tiendes a guiarte por la lógica, la acción y los objetivos. Valoras la estructura, los resultados y te sientes más cómodo/a cuando tienes un plan claro y una dirección definida.';
+        } else {
+            type.textContent = 'Equilibrio';
+            text.textContent = 'Tienes un equilibrio entre ambas energías. Esto significa que puedes moverte con fluidez entre la intuición y la lógica, la acción y la receptividad. Es un estado poderoso — y también uno que requiere consciencia para mantener.';
+        }
+    }
+
+    renderQuestion();
+
+    // Mobile menu
+    const toggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    </script>
+</body>
+</html>

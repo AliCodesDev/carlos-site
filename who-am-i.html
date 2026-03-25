@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who Am I | Escuela Psicodélica</title>
+    <meta name="description" content="Meet Carlos Flores — filmmaker, musician, life coach and the mind behind Escuela Psicodélica.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/images/flower-of-life.png" type="image/png">
+    <style>
+        .who-hero {
+            padding: 160px 0 100px;
+            background: var(--bg);
+        }
+        .who-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .who-photo img {
+            border-radius: var(--radius);
+            width: 100%;
+            max-width: 450px;
+        }
+        .who-bio h1 {
+            font-family: 'KG Happy', cursive;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 24px;
+        }
+        .who-bio p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .who-bio p strong {
+            color: var(--text);
+        }
+        .who-youtube {
+            padding: 80px 0;
+            background: var(--bg-card);
+            text-align: center;
+            border-top: 1px solid rgba(201,162,77,0.1);
+        }
+        .who-youtube h2 {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .who-youtube p {
+            color: var(--text-muted);
+            max-width: 550px;
+            margin: 0 auto 32px;
+            font-size: 1.05rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 32px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        .back-link:hover { color: var(--gold); }
+        @media (max-width: 768px) {
+            .who-layout {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 32px;
+            }
+            .who-photo img { max-width: 300px; margin: 0 auto; }
+            .who-bio { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav id="navbar" class="scrolled">
+        <a href="index.html" class="nav-logo">Escuela Psicodélica</a>
+        <button class="nav-toggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html#coaching">Coaching</a></li>
+            <li><a href="index.html#filmmaking">Filmmaking</a></li>
+            <li><a href="index.html#music">Music</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- WHO AM I -->
+    <section class="who-hero">
+        <div class="container">
+            <div class="who-layout">
+                <div class="who-photo">
+                    <img src="assets/images/coaching-photo.jpg" alt="Carlos Flores">
+                </div>
+                <div class="who-bio">
+                    <h1>Who Am I</h1>
+                    <p><strong>I'm Carlos Flores</strong> — filmmaker, musician, and life coach based in Amsterdam. For years I've been exploring the intersection of creativity, spirituality, and personal transformation.</p>
+                    <p>My journey started behind the camera, telling stories through film and photography across Europe. Over time, that creative path led me deeper — into music, consciousness, and ultimately coaching.</p>
+                    <p>Through <strong>Escuela Psicodélica</strong>, I share everything I've learned: how to unlock your creative potential, face your shadows, and step into the fullest version of yourself.</p>
+                    <p>Whether it's through a coaching session, a film, or a song — my mission is to inspire transformation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YOUTUBE CTA -->
+    <section class="who-youtube">
+        <div class="container">
+            <h2>Check Out My YouTube Channel</h2>
+            <p>I create content about consciousness, creativity, filmmaking, music, and personal growth. New videos every week.</p>
+            <a href="https://www.youtube.com/@escuelapsicodelica/featured" target="_blank" rel="noopener" class="btn">Visit Channel</a>
+            <br>
+            <a href="index.html" class="back-link">&larr; Back to Home</a>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu
+        const toggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('open'));
+        });
+    </script>
+</body>
+</html>
