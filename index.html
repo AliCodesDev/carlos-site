@@ -3,217 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escuela Psicodélica | Coaching, Filmmaking & Music</title>
-    <meta name="description" content="Escuela Psicodélica — Life Coaching, Filmmaking & Music by Carlos Flores.">
+    <title>Escuela Psicodélica — Photo Walks</title>
+    <meta name="description" content="Photo walks in Amsterdam with Escuela Psicodélica. 1–2 hour paid photography sessions.">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="assets/images/flower-of-life.png" type="image/png">
 </head>
 <body>
 
-    <!-- NAV -->
-    <nav id="navbar">
-        <a href="#hero" class="nav-logo">Escuela Psicodélica</a>
-        <button class="nav-toggle" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-        </button>
-        <ul class="nav-links">
-            <li><a href="#coaching">Coaching</a></li>
-            <li><a href="#filmmaking">Filmmaking</a></li>
-            <li><a href="#music">Music</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <!-- LOGO (top-left) -->
+    <a href="#hero" class="site-logo" aria-label="Escuela Psicodélica home">Escuela&nbsp;Psicodélica</a>
 
     <!-- HERO -->
-    <section id="hero">
+    <section id="hero" class="hero">
+        <!--
+          TODO: Replace assets/video/hero-reel.mp4 with the Morocco mp4 from Carlos when it arrives.
+          Currently using the 2021 Filmmaking Reel as a placeholder background.
+        -->
+        <video
+            class="hero-video"
+            src="assets/video/hero-reel.mp4"
+            poster="assets/images/gallery/photo-2022-10-1.png"
+            autoplay muted loop playsinline preload="metadata"
+            aria-hidden="true"></video>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <img src="assets/images/flower-of-life.png" alt="" class="hero-symbol">
-            <h1 class="hero-title">Escuela Psicodélica</h1>
-            <p class="hero-tagline">Coaching &middot; Filmmaking &middot; Music</p>
-            <a href="#coaching" class="btn">Explore</a>
+            <h1 class="hero-name">Escuela Psicodélica</h1>
+            <p class="hero-tagline">Photo walks · Amsterdam</p>
         </div>
+        <a href="#gallery" class="hero-scroll" aria-label="Scroll to gallery">↓</a>
     </section>
 
-    <!-- ENERGY TEST -->
-    <section id="energy-test">
-        <div class="container">
-            <div class="energy-test-card">
-                <h2>Discover Your Predominant Energy</h2>
-                <p>Take the Masculine & Feminine Energy Test and unlock a deeper understanding of yourself.</p>
-                <a href="energy-test.html" class="btn">Take the Test</a>
-            </div>
+    <!-- GALLERY -->
+    <section id="gallery" class="gallery-section">
+        <div class="gallery-filters" role="tablist">
+            <button class="filter active" data-filter="all" role="tab" aria-selected="true">All</button>
+            <button class="filter" data-filter="portraits" role="tab">Portraits</button>
+            <button class="filter" data-filter="product" role="tab">Product</button>
+            <button class="filter" data-filter="artistic-video" role="tab">Artistic Video</button>
+            <button class="filter" data-filter="events" role="tab">Events</button>
+            <button class="filter" data-filter="videoclips" role="tab">Videoclips</button>
         </div>
+        <div class="gallery" id="gallery-grid">
+      <div class="gallery-item tile-feature" data-category="events"><img src="assets/images/gallery/photo-2022-10-1-1.png" alt="" loading="lazy" width="800" height="538"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-10-1.png" alt="" loading="lazy" width="800" height="1006"></div>
+      <div class="gallery-item" data-category="portraits"><img src="assets/images/gallery/photo-2022-10-10-1.png" alt="" loading="lazy" width="873" height="582"></div>
+      <div class="gallery-item tile-wide" data-category="portraits"><img src="assets/images/gallery/photo-2022-10-10.png" alt="" loading="lazy" width="800" height="533"></div>
+      <div class="gallery-item" data-category="events"><img src="assets/images/gallery/photo-2022-10-11-1.png" alt="" loading="lazy" width="776" height="554"></div>
+      <div class="gallery-item" data-category="events"><img src="assets/images/gallery/photo-2022-10-11.png" alt="" loading="lazy" width="800" height="533"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-10-13.png" alt="" loading="lazy" width="800" height="1035"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-10-14.png" alt="" loading="lazy" width="800" height="1200"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-10-15.png" alt="" loading="lazy" width="800" height="1200"></div>
+      <div class="gallery-item tile-feature" data-category="portraits"><img src="assets/images/gallery/photo-2022-10-17.1.png" alt="" loading="lazy" width="800" height="1093"></div>
+      <div class="gallery-item" data-category="events"><img src="assets/images/gallery/photo-2022-10-17.2.png" alt="" loading="lazy" width="800" height="533"></div>
+      <div class="gallery-item" data-category="events"><img src="assets/images/gallery/photo-2022-10-18.png" alt="" loading="lazy" width="800" height="533"></div>
+      <div class="gallery-item tile-wide" data-category="events"><img src="assets/images/gallery/photo-2022-10-2.png" alt="" loading="lazy" width="800" height="533"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-10-20.png" alt="" loading="lazy" width="800" height="1200"></div>
+      <div class="gallery-item" data-category="events"><img src="assets/images/gallery/photo-2022-10-21.png" alt="" loading="lazy" width="800" height="500"></div>
+      <div class="gallery-item tile-wide" data-category="events"><img src="assets/images/gallery/photo-2022-10-3-1.png" alt="" loading="lazy" width="800" height="533"></div>
+      <div class="gallery-item tile-tall" data-category="events"><img src="assets/images/gallery/photo-2022-10-3.png" alt="" loading="lazy" width="750" height="1125"></div>
+      <div class="gallery-item" data-category="product"><img src="assets/images/gallery/photo-2022-10-4-1.png" alt="" loading="lazy" width="800" height="533"></div>
+      <div class="gallery-item tile-feature" data-category="events"><img src="assets/images/gallery/photo-2022-10-4.png" alt="" loading="lazy" width="800" height="533"></div>
+      <div class="gallery-item" data-category="product"><img src="assets/images/gallery/photo-2022-10-5.png" alt="" loading="lazy" width="800" height="487"></div>
+      <div class="gallery-item" data-category="portraits"><img src="assets/images/gallery/photo-2022-10-6-1.png" alt="" loading="lazy" width="800" height="533"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-10-6.png" alt="" loading="lazy" width="800" height="1200"></div>
+      <div class="gallery-item" data-category="portraits"><img src="assets/images/gallery/photo-2022-10-7-1.png" alt="" loading="lazy" width="800" height="533"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-10-7.png" alt="" loading="lazy" width="800" height="1200"></div>
+      <div class="gallery-item tile-wide" data-category="events"><img src="assets/images/gallery/photo-2022-10-8-1.png" alt="" loading="lazy" width="800" height="533"></div>
+      <div class="gallery-item" data-category="events"><img src="assets/images/gallery/photo-2022-10-8.png" alt="" loading="lazy" width="800" height="590"></div>
+      <div class="gallery-item" data-category="portraits"><img src="assets/images/gallery/photo-2022-10-9-1.png" alt="" loading="lazy" width="873" height="582"></div>
+      <div class="gallery-item tile-feature" data-category="portraits"><img src="assets/images/gallery/photo-2022-10-9.png" alt="" loading="lazy" width="800" height="1200"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-11-1-1.png" alt="" loading="lazy" width="600" height="777"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-11-10-1.png" alt="" loading="lazy" width="600" height="900"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-11-11-1.png" alt="" loading="lazy" width="600" height="900"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-11-12.png" alt="" loading="lazy" width="600" height="900"></div>
+      <div class="gallery-item" data-category="events"><img src="assets/images/gallery/photo-2022-11-13.jpg" alt="" loading="lazy" width="1900" height="1267"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-11-13.png" alt="" loading="lazy" width="600" height="900"></div>
+      <div class="gallery-item" data-category="portraits"><img src="assets/images/gallery/photo-2022-11-14-1.png" alt="" loading="lazy" width="600" height="400"></div>
+      <div class="gallery-item" data-category="events"><img src="assets/images/gallery/photo-2022-11-14.jpg" alt="" loading="lazy" width="1900" height="1267"></div>
+      <div class="gallery-item tile-feature" data-category="portraits"><img src="assets/images/gallery/photo-2022-11-14.png" alt="" loading="lazy" width="800" height="1006"></div>
+      <div class="gallery-item" data-category="portraits"><img src="assets/images/gallery/photo-2022-11-15-1.png" alt="" loading="lazy" width="600" height="400"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-11-15.png" alt="" loading="lazy" width="800" height="1006"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-11-16.png" alt="" loading="lazy" width="800" height="1034"></div>
+      <div class="gallery-item tile-tall" data-category="events"><img src="assets/images/gallery/photo-2022-11-2.png" alt="" loading="lazy" width="600" height="900"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-11-20.png" alt="" loading="lazy" width="800" height="1006"></div>
+      <div class="gallery-item tile-tall" data-category="events"><img src="assets/images/gallery/photo-2022-11-3-1.png" alt="" loading="lazy" width="600" height="900"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-11-3-1ccc.jpg" alt="" loading="lazy" width="600" height="900"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-11-3.png" alt="" loading="lazy" width="800" height="1006"></div>
+      <div class="gallery-item tile-feature" data-category="portraits"><img src="assets/images/gallery/photo-2022-11-4-1.png" alt="" loading="lazy" width="600" height="900"></div>
+      <div class="gallery-item" data-category="portraits"><img src="assets/images/gallery/photo-2022-11-4.png" alt="" loading="lazy" width="650" height="433"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-11-5.png" alt="" loading="lazy" width="600" height="900"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-11-6-1.png" alt="" loading="lazy" width="600" height="900"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-11-6.png" alt="" loading="lazy" width="800" height="1199"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-11-7-1.png" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-11-8-1.png" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/photo-2022-11-9.png" alt="" loading="lazy" width="600" height="776"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/portfolio-1.jpg" alt="" loading="lazy" width="1900" height="2459"></div>
+      <div class="gallery-item tile-feature" data-category="product"><img src="assets/images/gallery/portfolio-2.jpg" alt="" loading="lazy" width="1900" height="1267"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/portfolio-3.jpg" alt="" loading="lazy" width="1900" height="2459"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/portfolio-4.png" alt="" loading="lazy" width="800" height="1006"></div>
+      <div class="gallery-item tile-tall" data-category="events"><img src="assets/images/gallery/portfolio-5.jpg" alt="" loading="lazy" width="1900" height="2459"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/portfolio-6.jpg" alt="" loading="lazy" width="1900" height="2850"></div>
+      <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/portfolio-7.jpg" alt="" loading="lazy" width="1067" height="1600"></div>
+      <div class="gallery-item tile-wide" data-category="events"><img src="assets/images/gallery/portfolio-8.jpg" alt="" loading="lazy" width="1900" height="1425"></div>
+      <div class="gallery-item" data-category="events"><img src="assets/images/gallery/portfolio-9.jpg" alt="" loading="lazy" width="1900" height="1267"></div>
+      <div class="gallery-item" data-category="portraits"><img src="assets/images/gallery/portrait-clonsita.jpg" alt="" loading="lazy" width="1041" height="1041"></div>
+      <div class="gallery-item" data-category="portraits"><img src="assets/images/gallery/portrait-mohammad.jpg" alt="" loading="lazy" width="300" height="300"></div>
+      <div class="gallery-item" data-category="portraits"><img src="assets/images/gallery/portrait-samira.jpg" alt="" loading="lazy" width="300" height="300"></div>
+      <div class="gallery-item gallery-item-video tile-wide" data-category="artistic-video" data-video="m0kzSTzPfrk" data-title="Cinematography Showreel"><img src="https://i.ytimg.com/vi/m0kzSTzPfrk/hqdefault.jpg" alt="Cinematography Showreel" loading="lazy"><span class="play-badge" aria-hidden="true">▶</span></div>
+      <div class="gallery-item gallery-item-video" data-category="artistic-video" data-video="V9xsMtxgI-I" data-title="Filmmaking Reel 2021"><img src="https://i.ytimg.com/vi/V9xsMtxgI-I/hqdefault.jpg" alt="Filmmaking Reel 2021" loading="lazy"><span class="play-badge" aria-hidden="true">▶</span></div>
+      <div class="gallery-item gallery-item-video" data-category="artistic-video" data-video="kTVHwl4VjeA" data-title=""Springs" (2015) Shortfilm"><img src="https://i.ytimg.com/vi/kTVHwl4VjeA/hqdefault.jpg" alt=""Springs" (2015) Shortfilm" loading="lazy"><span class="play-badge" aria-hidden="true">▶</span></div>
+      <div class="gallery-item gallery-item-video tile-wide" data-category="artistic-video" data-video="YgS37h9mOco" data-title="Amsterdam TIME LAPSE"><img src="https://i.ytimg.com/vi/YgS37h9mOco/hqdefault.jpg" alt="Amsterdam TIME LAPSE" loading="lazy"><span class="play-badge" aria-hidden="true">▶</span></div>
+      <div class="gallery-item gallery-item-video" data-category="artistic-video" data-video="AtMUs6Xh_kk" data-title="Picture Perfect Match advert"><img src="https://i.ytimg.com/vi/AtMUs6Xh_kk/hqdefault.jpg" alt="Picture Perfect Match advert" loading="lazy"><span class="play-badge" aria-hidden="true">▶</span></div>
+      <div class="gallery-item gallery-item-video tile-wide" data-category="events" data-video="xTo8Jw4Avuc" data-title="Events Reel"><img src="https://i.ytimg.com/vi/xTo8Jw4Avuc/hqdefault.jpg" alt="Events Reel" loading="lazy"><span class="play-badge" aria-hidden="true">▶</span></div>
+      <div class="gallery-item gallery-item-video" data-category="videoclips" data-video="HMXK5iNsUfk" data-title="RAK — ANUNNAKI"><img src="https://i.ytimg.com/vi/HMXK5iNsUfk/hqdefault.jpg" alt="RAK — ANUNNAKI" loading="lazy"><span class="play-badge" aria-hidden="true">▶</span></div>
+      <div class="gallery-item gallery-item-video" data-category="videoclips" data-video="UDehIZLaiy8" data-title="RAK — 3PLE TEMPO"><img src="https://i.ytimg.com/vi/UDehIZLaiy8/hqdefault.jpg" alt="RAK — 3PLE TEMPO" loading="lazy"><span class="play-badge" aria-hidden="true">▶</span></div>
+      <div class="gallery-item gallery-item-video" data-category="videoclips" data-video="oh_0FNMU9jM" data-title="RAK — Palacio de Mil Noches"><img src="https://i.ytimg.com/vi/oh_0FNMU9jM/hqdefault.jpg" alt="RAK — Palacio de Mil Noches" loading="lazy"><span class="play-badge" aria-hidden="true">▶</span></div>
+      <div class="gallery-item gallery-item-video" data-category="videoclips" data-video="Wq5lOxCKh-E" data-title="RAK — Tortitas de la Abuela"><img src="https://i.ytimg.com/vi/Wq5lOxCKh-E/hqdefault.jpg" alt="RAK — Tortitas de la Abuela" loading="lazy"><span class="play-badge" aria-hidden="true">▶</span></div>
+        </div>
+        <p class="gallery-empty" hidden>No items in this category yet.</p>
     </section>
 
-    <!-- WHO AM I TEASER -->
-    <section id="who-teaser">
-        <div class="container">
-            <div class="who-teaser-layout">
-                <div class="who-teaser-image">
-                    <img src="assets/images/coaching-photo.jpg" alt="Carlos Flores" loading="lazy">
-                </div>
-                <div class="who-teaser-content">
-                    <h2>Who Am I</h2>
-                    <p>Filmmaker, musician, life coach — and a seeker of truth. I've spent years exploring the intersection of creativity, spirituality, and personal transformation. My mission is to help you unlock your full potential.</p>
-                    <a href="who-am-i.html" class="btn btn-outline">Read My Story</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- YOUTUBE CTA -->
-    <section id="youtube-cta">
-        <div class="container youtube-cta-inner">
-            <h2>Follow Me on YouTube</h2>
-            <p>I create content about consciousness, creativity, filmmaking, music, and personal growth. New videos every week.</p>
-            <a href="https://www.youtube.com/@escuelapsicodelica/featured" target="_blank" rel="noopener" class="btn">Check It Out</a>
-        </div>
-    </section>
-
-    <!-- COACHING -->
-    <section id="coaching">
-        <div class="container coaching-centered">
-            <div class="coaching-image">
-                <img src="assets/images/coaching-photo.jpg" alt="Carlos Flores" loading="lazy">
-            </div>
-            <h2>Ready to transform your life?</h2>
-            <a href="https://calendly.com/carlosflorescoach/llamadadedescubrimiento" target="_blank" rel="noopener" class="btn btn-large">Book a 1-on-1 Call With Me</a>
-        </div>
-    </section>
-
-    <!-- FILMMAKING -->
-    <section id="filmmaking">
-        <div class="container">
-            <h2 class="section-title">Filmmaking</h2>
-
-            <!-- Tabs -->
-            <div class="av-tabs">
-                <button class="av-tab active" data-tab="photo">Photo</button>
-                <button class="av-tab" data-tab="video">Video</button>
-            </div>
-
-            <!-- PHOTO -->
-            <div class="av-panel active" id="panel-photo">
-                <div class="gallery">
-                    <div class="gallery-item"><img src="assets/images/portfolio-1.jpg" alt="Portrait photography" loading="lazy"></div>
-                    <div class="gallery-item"><img src="assets/images/portfolio-7.jpg" alt="Portrait photography" loading="lazy"></div>
-                    <div class="gallery-item"><img src="assets/images/portfolio-4.png" alt="Fine art photography" loading="lazy"></div>
-                    <div class="gallery-item"><img src="assets/images/portfolio-5.jpg" alt="Amsterdam photography" loading="lazy"></div>
-                    <div class="gallery-item"><img src="assets/images/portfolio-6.jpg" alt="Portrait photography" loading="lazy"></div>
-                    <div class="gallery-item"><img src="assets/images/portfolio-8.jpg" alt="Event photography" loading="lazy"></div>
-                    <div class="gallery-item"><img src="assets/images/portfolio-2.jpg" alt="Still life photography" loading="lazy"></div>
-                    <div class="gallery-item"><img src="assets/images/portfolio-9.jpg" alt="Amsterdam photography" loading="lazy"></div>
-                    <div class="gallery-item"><img src="assets/images/portfolio-3.jpg" alt="Portrait photography" loading="lazy"></div>
-                </div>
-            </div>
-
-            <!-- VIDEO -->
-            <div class="av-panel" id="panel-video">
-                <div class="video-grid" id="video-grid">
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/m0kzSTzPfrk" title="Cinematography Showreel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Cinematography Showreel</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/V9xsMtxgI-I" title="Filmmaking Reel 2021" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Filmmaking Reel 2021</h4>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/xTo8Jw4Avuc" title="Events Reel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Events Reel</h4>
-                    </div>
-                    <div class="video-card hidden-video">
-                        <div class="video-wrapper">
-                            <iframe data-src="https://www.youtube.com/embed/kTVHwl4VjeA" title="Springs Shortfilm" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>"Springs" (2015) Shortfilm</h4>
-                    </div>
-                    <div class="video-card hidden-video">
-                        <div class="video-wrapper">
-                            <iframe data-src="https://www.youtube.com/embed/YgS37h9mOco" title="Amsterdam TIME LAPSE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Amsterdam TIME LAPSE</h4>
-                    </div>
-                    <div class="video-card hidden-video">
-                        <div class="video-wrapper">
-                            <iframe data-src="https://www.youtube.com/embed/AtMUs6Xh_kk" title="Picture Perfect Match ADVERT" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <h4>Picture Perfect Match ADVERT</h4>
-                    </div>
-                </div>
-                <div class="section-cta">
-                    <button class="btn btn-outline" id="show-more-videos">Show More</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MUSIC -->
-    <section id="music">
-        <div class="container">
-            <h2 class="section-title">Music</h2>
-            <p class="section-subtitle">Listen to my latest tracks and musical projects.</p>
-
-            <div class="music-grid">
-                <div class="music-card">
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/HMXK5iNsUfk" title="RAK - ANUNNAKI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                </div>
-                <div class="music-card">
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/UDehIZLaiy8" title="RAK - 3PLE TEMPO" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                </div>
-                <div class="music-card">
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/oh_0FNMU9jM" title="RAK - Palacio de Mil Noches" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                </div>
-                <div class="music-card">
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/Wq5lOxCKh-E" title="RAK - Tortitas de la Abuela" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-cta">
-                <a href="https://www.youtube.com/@rakmusicaa" target="_blank" rel="noopener" class="btn btn-outline">View YouTube Channel</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT / FOOTER -->
-    <footer id="contact">
-        <div class="container">
-            <h2 class="section-title">Get in Touch</h2>
-            <div class="social-links">
-                <a href="https://www.instagram.com/escuelapsicodelica/" target="_blank" rel="noopener" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                </a>
-                <a href="https://www.youtube.com/@escuelapsicodelica/featured" target="_blank" rel="noopener" aria-label="YouTube">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                </a>
-            </div>
-            <div class="footer-links">
-                <a href="who-am-i.html">Who Am I</a>
-            </div>
-            <p class="footer-text">Escuela Psicodélica &copy; 2026</p>
-        </div>
+    <!-- CONTACT -->
+    <footer id="contact" class="contact">
+        <p class="contact-line">
+            <a href="mailto:hello@escuelapsicodelica.com">hello@escuelapsicodelica.com</a>
+            <span class="contact-sep">·</span>
+            <a href="https://www.youtube.com/@escuelapsicodelica/featured" target="_blank" rel="noopener">YouTube</a>
+        </p>
+        <p class="contact-credit">Escuela Psicodélica · 2026</p>
     </footer>
 
     <!-- LIGHTBOX -->
-    <div class="lightbox" id="lightbox">
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
         <button class="lightbox-close" aria-label="Close">&times;</button>
         <button class="lightbox-prev" aria-label="Previous">&lsaquo;</button>
         <button class="lightbox-next" aria-label="Next">&rsaquo;</button>
-        <img src="" alt="" class="lightbox-img">
+        <div class="lightbox-stage">
+            <img src="" alt="" class="lightbox-img" hidden>
+            <div class="lightbox-video" hidden></div>
+        </div>
     </div>
 
     <script src="script.js"></script>
