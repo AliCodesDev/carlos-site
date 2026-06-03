@@ -120,7 +120,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ===== SCROLL FADE-IN =====
-const fadeEls = document.querySelectorAll('.gallery-item, .gallery-filters, .contact');
+const fadeEls = document.querySelectorAll('.gallery-item, .gallery-filters, .energy-cta, .contact');
 fadeEls.forEach(el => el.classList.add('fade-in'));
 
 const observer = new IntersectionObserver((entries) => {

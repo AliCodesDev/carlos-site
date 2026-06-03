@@ -246,6 +246,44 @@ a:hover { color: var(--gold-light); }
     font-size: 0.9rem;
 }
 
+/* ===== ENERGY TEST CTA ===== */
+.energy-cta {
+    padding: 100px 24px;
+    text-align: center;
+    background: var(--bg-card);
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+.energy-cta-inner { max-width: 600px; margin: 0 auto; }
+.energy-cta-kicker {
+    font-size: 0.8rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 14px;
+}
+.energy-cta-title {
+    font-family: 'KG Happy', cursive;
+    font-weight: normal;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 12px;
+}
+.energy-cta-text { color: var(--text-muted); margin-bottom: 28px; }
+.energy-cta-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--bg) !important;
+    padding: 13px 34px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: all var(--transition);
+}
+.energy-cta-btn:hover { background: var(--gold-light); color: var(--bg) !important; }
+
 /* ===== CONTACT ===== */
 .contact {
     padding: 64px 24px 48px;
