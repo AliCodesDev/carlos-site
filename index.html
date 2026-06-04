@@ -13,22 +13,25 @@
     <!-- LOGO (top-left) -->
     <a href="#hero" class="site-logo" aria-label="Carlos Flores home">Carlos&nbsp;Flores</a>
 
+    <!-- LANGUAGE TOGGLE (top-right) -->
+    <div class="lang-toggle" role="group" aria-label="Language / Idioma">
+        <button class="lang-btn" data-lang="en" type="button">EN</button>
+        <button class="lang-btn" data-lang="es" type="button">ES</button>
+    </div>
+
     <!-- HERO -->
     <section id="hero" class="hero">
-        <!--
-          TODO: Replace assets/video/hero-reel.mp4 with the Morocco mp4 from Carlos when it arrives.
-          Currently using the 2021 Filmmaking Reel as a placeholder background.
-        -->
+        <!-- Carlos's "Que quiero comunicar" reel, compressed to 1080p/muted for web (see assets_updated/ for the original). -->
         <video
             class="hero-video"
-            src="assets/video/hero-reel.mp4"
-            poster="assets/images/gallery/landscapes/clon-lago-di-braies-1.jpg"
+            src="assets/video/hero.mp4"
+            poster="assets/images/hero-poster.jpg"
             autoplay muted loop playsinline preload="metadata"
             aria-hidden="true"></video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="hero-name">Carlos Flores</h1>
-            <p class="hero-tagline">Photo & Video</p>
+            <p class="hero-tagline" data-i18n="hero.tagline">Photo & Video</p>
         </div>
         <a href="#gallery" class="hero-scroll" aria-label="Scroll to gallery">↓</a>
     </section>
@@ -36,13 +39,13 @@
     <!-- GALLERY -->
     <section id="gallery" class="gallery-section">
         <div class="gallery-filters" role="tablist">
-            <button class="filter active" data-filter="all" role="tab" aria-selected="true">All</button>
-            <button class="filter" data-filter="portraits" role="tab">Portraits</button>
-            <button class="filter" data-filter="landscapes" role="tab">Landscapes</button>
-            <button class="filter" data-filter="events" role="tab">Events</button>
-            <button class="filter" data-filter="product" role="tab">Product</button>
-            <button class="filter" data-filter="spaces" role="tab">Spaces</button>
-            <button class="filter" data-filter="videos" role="tab">Videos</button>
+            <button class="filter active" data-filter="all" role="tab" aria-selected="true" data-i18n="filter.all">All</button>
+            <button class="filter" data-filter="portraits" role="tab" data-i18n="filter.portraits">Portraits</button>
+            <button class="filter" data-filter="landscapes" role="tab" data-i18n="filter.landscapes">Landscapes</button>
+            <button class="filter" data-filter="events" role="tab" data-i18n="filter.events">Events</button>
+            <button class="filter" data-filter="product" role="tab" data-i18n="filter.product">Product</button>
+            <button class="filter" data-filter="spaces" role="tab" data-i18n="filter.spaces">Spaces</button>
+            <button class="filter" data-filter="videos" role="tab" data-i18n="filter.videos">Videos</button>
         </div>
         <div class="gallery" id="gallery-grid">
       <div class="gallery-item tile-tall" data-category="portraits"><img src="assets/images/gallery/portraits/alegria-retrato.jpg" alt="" loading="lazy" width="1280" height="1600"></div>
@@ -105,16 +108,16 @@
       <div class="gallery-item gallery-item-video tile-wide" data-category="videos" data-video="mr5MGG70NDU" data-title="Educational"><img src="https://i.ytimg.com/vi/mr5MGG70NDU/hqdefault.jpg" alt="Educational" loading="lazy"><span class="play-badge" aria-hidden="true">▶</span></div>
       <div class="gallery-item gallery-item-video tile-wide" data-category="videos" data-video="sJ3sdvJtG_o" data-title="Travelling"><img src="https://i.ytimg.com/vi/sJ3sdvJtG_o/hqdefault.jpg" alt="Travelling" loading="lazy"><span class="play-badge" aria-hidden="true">▶</span></div>
         </div>
-        <p class="gallery-empty" hidden>No items in this category yet.</p>
+        <p class="gallery-empty" hidden data-i18n="gallery.empty">No items in this category yet.</p>
     </section>
 
     <!-- ENERGY TEST CTA -->
     <section id="energy-test-cta" class="energy-cta">
         <div class="energy-cta-inner">
-            <p class="energy-cta-kicker">Test de Energía</p>
-            <h2 class="energy-cta-title">¿Cuál es tu energía predominante?</h2>
-            <p class="energy-cta-text">Masculina o femenina — descúbrelo en 5 minutos.</p>
-            <a href="energy-test.html" class="energy-cta-btn">Hacer el test</a>
+            <p class="energy-cta-kicker" data-i18n="energy.kicker">Energy Test</p>
+            <h2 class="energy-cta-title" data-i18n="energy.title">What's your predominant energy?</h2>
+            <p class="energy-cta-text" data-i18n="energy.text">Masculine or feminine — find out in 5 minutes.</p>
+            <a href="energy-test.html" class="energy-cta-btn" data-i18n="energy.btn">Take the test</a>
         </div>
     </section>
 
@@ -139,6 +142,7 @@
         </div>
     </div>
 
+    <script src="i18n.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

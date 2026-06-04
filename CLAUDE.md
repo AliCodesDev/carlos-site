@@ -34,8 +34,8 @@ Carlos also shares current media via a Google Drive folder (see Key Links). **He
 
 ### `index.html` sections (top to bottom)
 1. **Logo** — fixed top-left, text-only "Carlos Flores" in KG Happy (links to `#hero`).
-2. **Hero** — full-viewport autoplaying muted background video (`assets/video/hero-reel.mp4`) with a dark overlay, title "Carlos Flores", tagline "Photo & Video", and a scroll arrow.
-   - **Hero video is still a placeholder** (2021 reel). Carlos chose his Drive file **`Que quiero comunicar.mp4`** (~128 MB) as the real hero — it must be downloaded locally and **compressed** (it's far too big to serve raw) before swapping in. The `poster` currently points at a landscape gallery image. (`TODO` is in the markup.)
+2. **Hero** — full-viewport autoplaying muted background video (`assets/video/hero.mp4`) with a dark overlay, title "Carlos Flores", tagline "Photo & Video", and a scroll arrow.
+   - The video is Carlos's **`Que quiero comunicar.mp4`** (1920×1080, 2 min), compressed from ~128 MB → ~25 MB (H.264, CRF 28, audio stripped, `+faststart`) via the venv's bundled ffmpeg (`imageio-ffmpeg`). The original lives in `assets_updated/` (gitignored). The `poster` (`assets/images/hero-poster.jpg`) is a frame pulled from the video.
 3. **Gallery** — the filterable **bento grid** (see below). The heart of the page.
 4. **Energy Test CTA** — gold section (`.energy-cta`) linking to `energy-test.html`.
 5. **Contact footer** — email (`carlosflorescuevas@gmail.com`) + YouTube link.
@@ -54,22 +54,31 @@ Carlos also shares current media via a Google Drive folder (see Key Links). **He
 - **Lightbox:** images open directly, videos as YouTube iframes; prev/next respects the active filter; Escape / ArrowLeft / ArrowRight; clears the iframe on close.
 - **Scroll fade-in:** `IntersectionObserver` adds `.visible` to gallery items, filters, the energy CTA, and contact.
 
+### Internationalization (`i18n.js`)
+- The site is **bilingual EN/ES** via a tiny no-build layer in `i18n.js`, loaded before `script.js` on `index.html` and before the inline script on `energy-test.html`.
+- **Language pick:** saved choice (`localStorage` key `lang`) → browser language → English. A fixed **EN/ES toggle** (`.lang-toggle`, top-right) switches and persists it.
+- **Static text:** elements carry `data-i18n="key"` (sets `textContent`) or `data-i18n-ph="key"` (sets `placeholder`); `i18n.js` swaps them from its `DICT` (`en`/`es`) on load and on toggle. The text written in the HTML is the **English** default.
+- **Dynamic text:** `i18n.js` exposes `window.I18N` (`.lang`, `.t(key)`, `.setLang()`) and fires a `langchange` event. The Energy Test quiz listens for it and re-renders (its questions are a bilingual array; nav/result strings come from `I18N.t`).
+- **Adding a string:** add the key to BOTH `en` and `es` in the `DICT`, then reference it via `data-i18n` / `I18N.t`. Keep the two maps symmetric (there's a quick key-parity check you can re-run).
+
 ### `energy-test.html` (email-collecting lead magnet)
-- 8-question **Spanish** quiz — "¿Cuál es tu Energía Predominante?" — tallying masculine vs. feminine answers → result (Masculina / Femenina / Equilibrio). All logic is inline; no dependency on `script.js`.
+- 8-question quiz — "¿Cuál es tu Energía Predominante?" / "What's your predominant energy?" — available in **English and Spanish**, tallying masculine vs. feminine answers → result (Masculine / Feminine / Balance). All logic is inline; depends only on `i18n.js` for language state.
+- Netlify hidden fields (`resultado`/`puntuacion`) are stored in **fixed English** so Carlos's records stay consistent regardless of the visitor's language.
 - **Email gate:** the result is computed but hidden behind an email form — the user must submit their email to reveal it.
 - **Email storage = Netlify Forms.** The static `<form name="energy-test" data-netlify="true" ...>` is detected at deploy; submissions land in the Netlify dashboard (free tier 100/mo). Hidden fields `resultado` + `puntuacion` ride along so each email has its result. **Only captures once deployed on Netlify** — locally the quiz works (JS reveals the result regardless) but nothing is stored.
 - Self-contained: re-declares `.btn` / `.btn-outline` / `.container` in its own `<style>` (not in `style.css`); reuses `.site-logo`. Result offers a Calendly discovery-call CTA.
 
 ## Pending / Roadmap
-- **Hero video** — swap the placeholder for a compressed `Que quiero comunicar.mp4` (needs the local file first).
-- **Bilingual ES/EN** — Carlos wants the **whole site** in Spanish + English with a language toggle. Not built yet; planned as the last layer (so copy is translated once, after structure settles). Spanish drafts should be reviewed by Carlos (native speaker).
+- **Translation proof** — the EN copy for the Energy Test (questions + result text) was written by us; Carlos (native Spanish) should proof the English wording. ES is his original.
+- **Netlify forms check** — after the next deploy, do one real Energy Test submission and confirm it lands in the Netlify dashboard.
 
 ## Assets
 - `assets/fonts/KGHAPPY.ttf`, `KGHAPPYSolid.ttf` — KG Happy font family
 - `assets/images/flower-of-life.png` — gold sacred-geometry symbol, used as favicon
 - `assets/images/logo-text.png` — old "ESCUELA PSICODÉLICA" text logo (stale branding, unused)
 - `assets/images/gallery/<category>/` — compressed portfolio photos
-- `assets/video/hero-reel.mp4` — placeholder hero video (see Pending)
+- `assets/video/hero.mp4` — hero background video (Carlos's compressed reel, ~25 MB)
+- `assets/images/hero-poster.jpg` — poster frame for the hero video
 - `assets_updated/` — raw full-res Drive downloads (**gitignored**; source for compression)
 
 ### Key Links

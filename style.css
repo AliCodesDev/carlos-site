@@ -57,6 +57,39 @@ a:hover { color: var(--gold-light); }
     transition: opacity var(--transition);
 }
 
+/* ===== LANGUAGE TOGGLE (top-right, persistent) ===== */
+.lang-toggle {
+    position: fixed;
+    top: 18px;
+    right: 20px;
+    z-index: 100;
+    display: flex;
+    gap: 2px;
+    padding: 3px;
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 50px;
+    backdrop-filter: blur(4px);
+}
+.lang-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 5px 11px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+.lang-btn:hover { color: var(--text); }
+.lang-btn.active {
+    background: var(--gold);
+    color: var(--bg);
+}
+
 /* ===== HERO ===== */
 .hero {
     position: relative;
