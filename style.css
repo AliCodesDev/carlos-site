@@ -53,6 +53,7 @@ a:hover { color: var(--gold-light); }
     font-size: 1.05rem;
     color: var(--gold) !important;
     letter-spacing: 1.5px;
+    white-space: nowrap;
     text-shadow: 0 1px 8px rgba(0,0,0,0.6);
     transition: opacity var(--transition);
 }
@@ -88,6 +89,47 @@ a:hover { color: var(--gold-light); }
 .lang-btn.active {
     background: var(--gold);
     color: var(--bg);
+}
+
+/* ===== TOP NAV (energy-test shortcut + language toggle) ===== */
+.top-nav {
+    position: fixed;
+    top: 16px;
+    right: 20px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+/* Inside the top-nav the toggle flows in the flex row, not as its own fixed element
+   (it stays standalone-fixed on energy-test.html, which has no .top-nav). */
+.top-nav .lang-toggle {
+    position: static;
+    top: auto;
+    right: auto;
+}
+.nav-energy {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,162,77,0.5);
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(4px);
+    padding: 7px 16px;
+    border-radius: 50px;
+    white-space: nowrap;
+    transition: all var(--transition);
+}
+.nav-energy:hover {
+    background: var(--gold);
+    color: var(--bg);
+    border-color: var(--gold);
+}
+@media (max-width: 480px) {
+    .top-nav { gap: 8px; top: 14px; right: 14px; }
+    .nav-energy { padding: 6px 11px; font-size: 0.64rem; letter-spacing: 0.5px; }
 }
 
 /* ===== HERO ===== */

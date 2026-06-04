@@ -56,7 +56,7 @@ Carlos also shares current media via a Google Drive folder (see Key Links). **He
 
 ### Internationalization (`i18n.js`)
 - The site is **bilingual EN/ES** via a tiny no-build layer in `i18n.js`, loaded before `script.js` on `index.html` and before the inline script on `energy-test.html`.
-- **Language pick:** saved choice (`localStorage` key `lang`) → browser language → English. A fixed **EN/ES toggle** (`.lang-toggle`, top-right) switches and persists it.
+- **Language pick:** saved choice (`localStorage` key `lang`) → browser language → English. A fixed **EN/ES toggle** (`.lang-toggle`, top-right) switches and persists it. On the homepage the toggle sits in a `.top-nav` alongside an **"Energy Test"** shortcut (`.nav-energy`) that smooth-scrolls to `#energy-test-cta`.
 - **Static text:** elements carry `data-i18n="key"` (sets `textContent`) or `data-i18n-ph="key"` (sets `placeholder`); `i18n.js` swaps them from its `DICT` (`en`/`es`) on load and on toggle. The text written in the HTML is the **English** default.
 - **Dynamic text:** `i18n.js` exposes `window.I18N` (`.lang`, `.t(key)`, `.setLang()`) and fires a `langchange` event. The Energy Test quiz listens for it and re-renders (its questions are a bilingual array; nav/result strings come from `I18N.t`).
 - **Adding a string:** add the key to BOTH `en` and `es` in the `DICT`, then reference it via `data-i18n` / `I18N.t`. Keep the two maps symmetric (there's a quick key-parity check you can re-run).
