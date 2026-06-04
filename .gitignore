@@ -1,2 +1,5 @@
 .venv/
 .DS_Store
+
+# Raw, full-res asset downloads from Carlos's Drive (originals; compressed copies live in assets/)
+assets_updated/

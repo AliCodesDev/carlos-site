@@ -49,7 +49,7 @@ a:hover { color: var(--gold-light); }
     top: 20px;
     left: 24px;
     z-index: 100;
-    font-family: 'KG Happy', cursive;
+    font-family: 'KG Happy', 'Inter', sans-serif;
     font-size: 1.05rem;
     color: var(--gold) !important;
     letter-spacing: 1.5px;
@@ -262,7 +262,7 @@ a:hover { color: var(--gold-light); }
     margin-bottom: 14px;
 }
 .energy-cta-title {
-    font-family: 'KG Happy', cursive;
+    font-family: 'KG Happy', 'Inter', sans-serif;
     font-weight: normal;
     font-size: clamp(1.6rem, 4vw, 2.4rem);
     color: var(--text);
