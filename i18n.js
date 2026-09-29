@@ -9,7 +9,7 @@
     const DICT = {
         en: {
             // index.html chrome
-            'hero.tagline': 'Photo & Video',
+            'hero.tagline': 'Audiovisual Artist',
             'filter.all': 'All',
             'filter.portraits': 'Portraits',
             'filter.landscapes': 'Landscapes',
@@ -47,7 +47,7 @@
         },
         es: {
             // index.html chrome
-            'hero.tagline': 'Foto y Vídeo',
+            'hero.tagline': 'Artista Audiovisual',
             'filter.all': 'Todo',
             'filter.portraits': 'Retratos',
             'filter.landscapes': 'Paisajes',

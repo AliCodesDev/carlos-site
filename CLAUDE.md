@@ -18,23 +18,24 @@ Carlos also shares current media via a Google Drive folder (see Key Links). **He
 
 ## Tech Stack
 - **Plain HTML/CSS/JS** — no frameworks, no build step
-- **Hosting:** Netlify (free tier). Netlify Forms powers the Energy Test email capture.
+- **Hosting:** Netlify (free tier) at **https://carlos-flores.netlify.app/**, auto-deployed from `main`. Netlify Forms powers the Energy Test email capture.
 - **GitHub repo:** `AliCodesDev/carlos-site` on `main` branch (commits go straight to `main`)
 - **Local dev:** `python3 -m http.server 8001` from `carlos-site/` (port 8001, user preference)
 - **Image processing:** `.venv/` Python venv with Pillow (+ fonttools), gitignored
 
 ## Design
 - **Dark black background** (`#0a0a0a`) with **gold accents** (`#c9a24d`) — inspired by [The Hermetic School](https://thehermeticschool.org/)
-- Typography: **KG Happy** display font for the logo/headings (TTF in `assets/fonts/`), Inter/system sans for body. Palette is CSS custom properties in `:root` in `style.css`.
-- **Font gotcha:** KG Happy has accented vowels and `¡` but is **missing `¿`** (U+00BF). So KG Happy font stacks are written `'KG Happy', 'Inter', sans-serif` — the per-glyph fallback renders `¿` in Inter while the rest stays KG Happy. Don't revert the fallback to generic `cursive` or the `¿` renders ugly.
+- Typography: **Playfair Display** (self-hosted variable woff2, weight 400–900) is the display face for the **wordmark and hero name**, set via the `--font-display` custom property — change that one line in `:root` to retheme both. **KG Happy** (TTF) still covers the Energy Test CTA title and the quiz headings/result. Inter/system sans for body. Palette is CSS custom properties in `:root` in `style.css`.
+- Playfair is self-hosted rather than pulled from Google's CDN (no third-party request; Carlos's business is EU-based). It ships as two `unicode-range`-split files exactly as Google serves them — the `latin` file alone covers every Spanish accent plus `¿ ¡`, so `latin-ext` is only fetched if an extended character actually appears.
+- **Font gotcha:** KG Happy has accented vowels and `¡` but is **missing `¿`** (U+00BF). So KG Happy font stacks are written `'KG Happy', 'Inter', sans-serif` — the per-glyph fallback renders `¿` in Inter while the rest stays KG Happy. Don't revert the fallback to generic `cursive` or the `¿` renders ugly. This only affects the places KG Happy is still used (Energy CTA title, quiz headings); Playfair Display has the full Latin-1 set and needs no such fallback.
 
 ## Site Structure
 
 `index.html` is the main page (anchor-scrolling), plus a standalone **`energy-test.html`** lead-magnet quiz linked from the homepage. (The old multi-page version — coaching page, `who-am-i` bio — is gone and staying gone, per Carlos.)
 
 ### `index.html` sections (top to bottom)
-1. **Logo** — fixed top-left, text-only "Carlos Flores" in KG Happy (links to `#hero`).
-2. **Hero** — full-viewport autoplaying muted background video (`assets/video/hero.mp4`) with a dark overlay, title "Carlos Flores", tagline "Photo & Video", and a scroll arrow.
+1. **Logo** — fixed top-left, text-only "Carlos Flores" in Playfair Display 600 (links to `#hero`). Shared with `energy-test.html` via `.site-logo`, so restyling it changes both pages.
+2. **Hero** — full-viewport autoplaying muted background video (`assets/video/hero.mp4`) with a dark overlay, title "Carlos Flores" (Playfair Display 600), tagline **"Audiovisual Artist" / "Artista Audiovisual"**, and a scroll arrow. Both the name's and the tagline's letter-spacing are `clamp()`-based so the longer Spanish tagline stays on one line down to 320px — don't re-add fixed `letter-spacing` overrides in the media queries.
    - The video is Carlos's **`Que quiero comunicar.mp4`** (1920×1080, 2 min), compressed from ~128 MB → ~25 MB (H.264, CRF 28, audio stripped, `+faststart`) via the venv's bundled ffmpeg (`imageio-ffmpeg`). The original lives in `assets_updated/` (gitignored). The `poster` (`assets/images/hero-poster.jpg`) is a frame pulled from the video.
 3. **Gallery** — the filterable **bento grid** (see below). The heart of the page.
 4. **Energy Test CTA** — gold section (`.energy-cta`) linking to `energy-test.html`.
@@ -43,6 +44,7 @@ Carlos also shares current media via a Google Drive folder (see Key Links). **He
 
 ### Gallery details (rebuilt 2026-06-04 from Carlos's Drive)
 - **Filter tabs:** All · Portraits · Landscapes · Events · Product · Spaces · Videos. Each tile has a `data-category`; `script.js` toggles `.hidden` to filter; an empty-state message shows if a filter has nothing.
+- **Tiles reserved to their own tab:** a tile marked `data-hide-in-all` is kept out of the **All** view and only appears under its own category tab. Per Carlos (2026-09-29) that's 4 landscapes (`clon-lago-di-braies-1`, `img-6208-2`, `img-6657`, `playa-4`) plus the **Events Reel** video. So All shows 54 of the 59 tiles. To reserve another tile, just add the bare attribute — no JS change.
 - **Photos (50):** compressed copies live in `assets/images/gallery/<category>/` where category ∈ `portraits, landscapes, events, product, spaces`. Counts: portraits 15, landscapes 9, events 10, product 10, spaces 6. Each `<img>` has explicit `width`/`height` + `loading="lazy"`.
   - Source of truth = the **Photography** subfolders in Carlos's Drive. Full-res originals are downloaded to `assets_updated/Photography/<Category>/` (gitignored). Compression: Pillow → max dim 1600px, JPEG q82, EXIF-rotated, ~12 MB total. The compress + markup-generation was done with an inline Python script (no script kept in-repo; re-run a similar one when photos change).
 - **Videos (8 + 1 reel):** `data-video="<youtubeId>"` + `data-title`. The 8 in the **Videos** filter come from Carlos's Drive video-list doc, each titled by genre: Artistic Video, Videoclips, After Movie, Real Estate, Company Trip, Artist Ad, Educational, Travelling. The **Events** filter leads with the **Events Reel** video (`xTo8Jw4Avuc`) before the event photos, per Carlos.
@@ -50,7 +52,7 @@ Carlos also shares current media via a Google Drive folder (see Key Links). **He
 
 ### `script.js` behavior
 - **Hero video:** on `loadedmetadata`, seeks to a random point in `[0, duration − 30s]`; plays (catching autoplay rejection); hides the video on `error` so the poster shows.
-- **Filter tabs:** toggle `.hidden` by category, update `aria-selected`, show/hide empty-state. Generic — reads `data-filter`/`data-category`, so adding categories needs no JS change.
+- **Filter tabs:** `applyFilter(cat)` toggles `.hidden` by category, honouring `data-hide-in-all` (see above); the click handler updates `aria-selected` and the empty-state. It's also called once at load, since the page opens on All and the reserved tiles must start hidden. Generic — reads `data-filter`/`data-category`, so adding categories needs no JS change.
 - **Lightbox:** images open directly, videos as YouTube iframes; prev/next respects the active filter; Escape / ArrowLeft / ArrowRight; clears the iframe on close.
 - **Scroll fade-in:** `IntersectionObserver` adds `.visible` to gallery items, filters, the energy CTA, and contact.
 
@@ -73,7 +75,8 @@ Carlos also shares current media via a Google Drive folder (see Key Links). **He
 - **Netlify forms check** — after the next deploy, do one real Energy Test submission and confirm it lands in the Netlify dashboard.
 
 ## Assets
-- `assets/fonts/KGHAPPY.ttf`, `KGHAPPYSolid.ttf` — KG Happy font family
+- `assets/fonts/KGHAPPY.ttf`, `KGHAPPYSolid.ttf` — KG Happy font family (Energy CTA + quiz only)
+- `assets/fonts/PlayfairDisplay-latin.woff2`, `PlayfairDisplay-latin-ext.woff2` — self-hosted Playfair Display variable font (wordmark + hero name)
 - `assets/images/flower-of-life.png` — gold sacred-geometry symbol, used as favicon
 - `assets/images/logo-text.png` — old "ESCUELA PSICODÉLICA" text logo (stale branding, unused)
 - `assets/images/gallery/<category>/` — compressed portfolio photos
@@ -82,6 +85,7 @@ Carlos also shares current media via a Google Drive folder (see Key Links). **He
 - `assets_updated/` — raw full-res Drive downloads (**gitignored**; source for compression)
 
 ### Key Links
+- **Live site:** https://carlos-flores.netlify.app/ — Netlify auto-deploys from `main`, so a push publishes it.
 - **YouTube (main):** https://www.youtube.com/@escuelapsicodelica/featured *(old-brand handle — confirm if renamed)*
 - **Contact email:** carlosflorescuevas@gmail.com
 - **Coaching booking (energy-test CTA):** https://calendly.com/carlosflorescoach/llamadadedescubrimiento
@@ -92,5 +96,6 @@ Carlos also shares current media via a Google Drive folder (see Key Links). **He
 - The user prefers port 8001 for local dev server
 - YouTube embeds don't work on `file://` — use a local server
 - The old WordPress SQL dump is the source of truth for recovering old content
-- When adding a gallery item: set `data-category`, give the `<img>` explicit `width`/`height` + `loading="lazy"`, and escape quotes in `data-title`/`alt` as `&quot;`
+- When adding a gallery item: set `data-category`, give the `<img>` explicit `width`/`height` + `loading="lazy"`, and escape quotes in `data-title`/`alt` as `&quot;`. Add `data-hide-in-all` if it should stay out of the All view.
+- Verifying layout in headless Chrome: `--virtual-time-budget` does **not** drive `IntersectionObserver`, so the scroll fade-in never fires and screenshots come out black. Drive Chrome over the DevTools Protocol with real wall-clock waits instead (and note headless floors the window width at 500px, so test narrow widths in a sized iframe).
 - To add/replace photos: drop originals in `assets_updated/`, re-run a Pillow compress into `assets/images/gallery/<category>/`, then regenerate the gallery tiles

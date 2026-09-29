@@ -20,6 +20,20 @@ const filters = document.querySelectorAll('.filter');
 const galleryItems = document.querySelectorAll('.gallery-item');
 const galleryEmpty = document.querySelector('.gallery-empty');
 
+// Tiles carrying [data-hide-in-all] are reserved for their own category tab —
+// they stay out of the "All" view but show normally under their filter.
+function applyFilter(cat) {
+    let visibleCount = 0;
+    galleryItems.forEach(item => {
+        const matches = cat === 'all'
+            ? !('hideInAll' in item.dataset)
+            : item.dataset.category === cat;
+        item.classList.toggle('hidden', !matches);
+        if (matches) visibleCount++;
+    });
+    if (galleryEmpty) galleryEmpty.hidden = visibleCount > 0;
+}
+
 filters.forEach(btn => {
     btn.addEventListener('click', () => {
         filters.forEach(f => {
@@ -29,16 +43,12 @@ filters.forEach(btn => {
         btn.classList.add('active');
         btn.setAttribute('aria-selected', 'true');
 
-        const cat = btn.dataset.filter;
-        let visibleCount = 0;
-        galleryItems.forEach(item => {
-            const matches = cat === 'all' || item.dataset.category === cat;
-            item.classList.toggle('hidden', !matches);
-            if (matches) visibleCount++;
-        });
-        if (galleryEmpty) galleryEmpty.hidden = visibleCount > 0;
+        applyFilter(btn.dataset.filter);
     });
 });
+
+// The page opens on "All", so apply it once to hide the reserved tiles.
+applyFilter('all');
 
 // ===== LIGHTBOX (photos + YouTube videos) =====
 const lightbox      = document.getElementById('lightbox');
