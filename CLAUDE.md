@@ -68,11 +68,23 @@ Carlos also shares current media via a Google Drive folder (see Key Links). **He
 - Netlify hidden fields (`resultado`/`puntuacion`) are stored in **fixed English** so Carlos's records stay consistent regardless of the visitor's language.
 - **Email gate:** the result is computed but hidden behind an email form — the user must submit their email to reveal it.
 - **Email storage = Netlify Forms.** The static `<form name="energy-test" data-netlify="true" ...>` is detected at deploy; submissions land in the Netlify dashboard (free tier 100/mo). Hidden fields `resultado` + `puntuacion` ride along so each email has its result. **Only captures once deployed on Netlify** — locally the quiz works (JS reveals the result regardless) but nothing is stored.
+- **Form detection is an opt-in site setting, and it is load-bearing.** Netlify no longer scans for forms by default. It was off from the Energy Test going live (2026-06-03) until **2026-09-29**, so every submission in that window was lost — the markup was correct the whole time. If it's ever switched off, or a new site/project is created for this repo, capture silently stops again.
+- **How to verify capture without using the UI** (do this after any hosting change):
+  ```
+  curl -X POST https://carlos-flores.netlify.app/ \
+    -H "Content-Type: application/x-www-form-urlencoded" \
+    --data-urlencode "form-name=energy-test" \
+    --data-urlencode "email=TEST-DELETE-ME@example.com" \
+    --data-urlencode "resultado=Balance" --data-urlencode "puntuacion=Feminine 4 / Masculine 4"
+  ```
+  **200 = registered, 404 = not detected.** Always run the same POST with a nonsense `form-name` as a control: it must still 404. Two 404s means detection is off; two 200s would mean something is accepting everything. Delete the test row afterwards.
+- **Silent-failure warning:** the page reveals the result whether or not the POST succeeds (deliberate — a network hiccup shouldn't trap the user). So a total outage is indistinguishable from success in the browser. Never verify this feature by eye; use the curl check above.
 - Self-contained: re-declares `.btn` / `.btn-outline` / `.container` in its own `<style>` (not in `style.css`); reuses `.site-logo`. Result offers a Calendly discovery-call CTA.
 
 ## Pending / Roadmap
 - **Translation proof** — the EN copy for the Energy Test (questions + result text) was written by us; Carlos (native Spanish) should proof the English wording. ES is his original.
-- **Netlify forms check** — after the next deploy, do one real Energy Test submission and confirm it lands in the Netlify dashboard.
+- **Netlify form notification → Carlos** — submissions land in Ali's Netlify dashboard, which Carlos has no reason to log into. Add an email notification (Forms → `energy-test` → Form notifications) to `carlosflorescuevas@gmail.com` so each lead reaches him directly. Dashboard stays as the archive/CSV export.
+- **Netlify forms check** — endpoint verified registered 2026-09-29 (200 vs 404 control). Still to confirm: a real end-to-end submission through the quiz UI shows up as a row in the dashboard.
 
 ## Assets
 - `assets/fonts/KGHAPPY.ttf`, `KGHAPPYSolid.ttf` — KG Happy font family (Energy CTA + quiz only)
